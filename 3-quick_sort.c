@@ -1,17 +1,18 @@
 #include "sort.h"
+#include <stddef.h>
 /**
 *swap - the positions of two elements into an array
 *@array: array
 *@item1: array element
 *@item2: array element
 */
-void swap(int *array, size_t item1, size_t item2)
+void swap(int *array, ssize_t item1, ssize_t item2)
 {
-	int temp;
+	int tmp;
 
-	temp = array[item1];
+	tmp = array[item1];
 	array[item1] = array[item2];
-	array[item2] = temp;
+	array[item2] = tmp;
 }
 /**
  *lomuto_partition - lomuto partition sorting scheme implementation
@@ -21,10 +22,10 @@ void swap(int *array, size_t item1, size_t item2)
  *@size: size array
  *Return: return the position of the last element sorted
  */
-int lomuto_partition(int *array, size_t first, size_t last, size_t size)
+int lomuto_partition(int *array, ssize_t first, ssize_t last, size_t size)
 {
 	int pivot = array[last];
-	size_t current = first, finder;
+	ssize_t current = first, finder;
 
 	for (finder = first; finder < last; finder++)
 	{
@@ -52,9 +53,9 @@ int lomuto_partition(int *array, size_t first, size_t last, size_t size)
  *@last: last array element
  *@size: array size
  */
-void qs(int *array, size_t first, size_t last, int size)
+void qs(int *array, ssize_t first, ssize_t last, int size)
 {
-	size_t position = 0;
+	ssize_t position = 0;
 
 
 	if (first < last)
@@ -68,7 +69,7 @@ void qs(int *array, size_t first, size_t last, int size)
 /**
  *quick_sort - prepare the terrain to quicksort algorithm
  *@array: array
- *@size: size
+ *@size: array size
  */
 void quick_sort(int *array, size_t size)
 {
